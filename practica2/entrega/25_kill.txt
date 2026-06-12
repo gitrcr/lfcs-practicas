@@ -1,0 +1,13 @@
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ sleep 9999
+^Z
+[1]+  Stopped                 sleep 9999
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ bg
+[1]+ sleep 9999 &
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ ps
+    PID TTY          TIME CMD
+1066775 pts/1    00:00:03 bash
+1090794 pts/1    00:00:00 sleep
+1090889 pts/1    00:00:00 ps
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ kill 1090794
+[1]+  Terminated              sleep 9999
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ 

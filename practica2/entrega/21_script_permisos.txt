@@ -1,0 +1,2 @@
+-rwx------ 1 lfcs lfcs 30 Jun 10 17:14 ./work/escenario_21/bin/hola.sh
+work/escenario_21/bin/hola.sh

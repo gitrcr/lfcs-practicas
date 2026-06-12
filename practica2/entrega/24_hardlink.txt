@@ -1,0 +1,3 @@
+656804 config.ini  656804 config.ini.bak  657052 index.html
+ 
+656804 -rw-rw-r-- 1 alice webdevs 13 Jun 12 00:18 /var/www/proyecto/shared/config.ini.bak

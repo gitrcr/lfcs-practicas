@@ -1,0 +1,13 @@
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ yes > /dev/null
+^C
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ yes > /dev/null &
+[1] 1091115
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ pgrep -a yes
+1091115 yes
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ sudo renice 10 -p 1091115
+[sudo] password for lfcs: 
+1091115 (process ID) old priority 0, new priority 10
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ kill -9 1091115
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ pgrep -a yes
+[1]+  Killed                  yes > /dev/null
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$

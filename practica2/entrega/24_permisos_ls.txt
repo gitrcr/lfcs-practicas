@@ -1,0 +1,18 @@
+total 28
+drwxr-xr-x 7 root root    4096 Jun 11 23:38 .
+drwxr-xr-x 3 root root    4096 Jun 11 23:38 ..
+drwxr-xr-x 2 root webdevs 4096 Jun 11 23:38 logs
+drwx------ 2 root root    4096 Jun 11 23:38 private
+drwxrwsr-x 2 root webdevs 4096 Jun 11 23:38 public
+drwxr-xr-x 2 root root    4096 Jun 11 23:38 release
+drwxrwsr-x 2 root webdevs 4096 Jun 11 23:38 shared
+ 
+/var/www/proyecto/public:
+total 8
+drwxrwsr-x 2 root webdevs 4096 Jun 11 23:38 .
+drwxr-xr-x 7 root root    4096 Jun 11 23:38 ..
+
+/var/www/proyecto/shared:
+total 8
+drwxrwsr-x 2 root webdevs 4096 Jun 11 23:38 .
+drwxr-xr-x 7 root root    4096 Jun 11 23:38 ..

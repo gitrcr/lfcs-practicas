@@ -1,0 +1,2 @@
+./work/escenario_21/src/old/legacy.LOG
+./work/escenario_21/src/old/legacy.log

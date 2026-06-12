@@ -1,0 +1,34 @@
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+--2026-06-12 01:14:59--  https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+Resolving releases.ubuntu.com (releases.ubuntu.com)... 91.189.91.107, 185.125.190.40, 185.125.190.37, ...
+Connecting to releases.ubuntu.com (releases.ubuntu.com)|91.189.91.107|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6518974464 (6.1G) [application/x-iso9660-image]
+Saving to: ‘ubuntu-26.04-desktop-amd64.iso’
+
+ubuntu-26.04-desktop-amd64.iso                                                  0%[                                                                                                                                                                                                  ]  10.18M  5.15MB/s               ^Z
+[1]+  Stopped                 wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ bg
+[1]+ wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso &
+
+Redirecting output to ‘wget-log’.
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ jobs
+[1]+  Running                 wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso &
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ ps -aux | grep "wget" && echo "" && pgrep wget && echo "" && pgrep -a wget
+lfcs     1090365  9.2  1.1  18640 11120 pts/1    S    01:14   0:05 wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+lfcs     1090584  0.0  0.2   6520  2372 pts/1    S+   01:15   0:00 grep wget
+
+1090365
+
+1090365 wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ fg
+wget https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+--2026-06-12 01:14:59--  https://releases.ubuntu.com/26.04/ubuntu-26.04-desktop-amd64.iso
+Resolving releases.ubuntu.com (releases.ubuntu.com)... 91.189.91.107, 185.125.190.40, 185.125.190.37, ...
+Connecting to releases.ubuntu.com (releases.ubuntu.com)|91.189.91.107|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6518974464 (6.1G) [application/x-iso9660-image]
+Saving to: ‘ubuntu-26.04-desktop-amd64.iso’
+
+ubuntu-26.04-desktop-amd64.iso                                                  9%[================>                                                                                                                                                                                 ] 575.06M  10.8MB/s    eta 10m 44s^C
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ 

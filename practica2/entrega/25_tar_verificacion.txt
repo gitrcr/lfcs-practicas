@@ -1,0 +1,27 @@
+total 656K
+drwxrwxr-x 2 lfcs lfcs 4.0K Jun 11 21:58 data
+drwxrwxr-x 2 lfcs lfcs 4.0K Jun 12 01:24 entrega
+-rw-rw-r-- 1 lfcs lfcs 630K Jun 12 01:22 entrega_practica2.tar.gz
+-rw-rw-r-- 1 lfcs lfcs  167 Jun 11 21:58 launch2.3.sh
+-rwx------ 1 lfcs lfcs 1.1K Jun 10 17:14 launch2.sh
+-rw-rw-r-- 1 lfcs lfcs 2.2K Jun 12 00:28 README.md
+drwxrwxr-x 3 lfcs lfcs 4.0K Jun 10 17:14 work
+entrega/
+entrega/21_validacion.txt
+entrega/21_umask.txt
+entrega/24_hardlink.txt
+entrega/23_informe.txt
+entrega/25_kill.txt
+entrega/24_sticky.txt
+entrega/25_renice.txt
+entrega/21_script_permisos.txt
+entrega/24_symlink.txt
+entrega/21_rutas.txt
+entrega/25_jobs_ps.txt
+entrega/23_find_varlog.txt
+entrega/24_permisos_ls.txt
+entrega/23_errores.log.gzip
+entrega/21_logs.txt
+entrega/21_grandes.txt
+entrega/24_sgid_prueba.txt
+data/access.log

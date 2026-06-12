@@ -1,0 +1,11 @@
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ prac2=work/escenario_21/src/app.conf  
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ cat $prac2 | grep "token="
+token=OK_roberto
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ cat $prac2 | grep "mode="
+mode=prod
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ cat $prac2 | grep -E "token=|mode="
+token=OK_roberto
+mode=prod
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ wc -l $prac2
+4 work/escenario_21/src/app.conf
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ 

@@ -1,0 +1,4 @@
+tar -l -f $file.gz
+rsync -a
+
+man tar

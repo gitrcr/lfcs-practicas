@@ -1,0 +1,13 @@
+drwxrwxrwt 2 root root    4096 Jun 12 00:25 drop
+drwxr-xr-x 2 root webdevs 4096 Jun 11 23:38 logs
+drwx------ 2 root root    4096 Jun 11 23:38 private
+drwxrwsr-x 2 root webdevs 4096 Jun 12 00:23 public
+drwxr-xr-x 2 root root    4096 Jun 11 23:38 release
+drwxrwsr-x 2 root webdevs 4096 Jun 12 00:19 shared
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ sudo su alice
+$ touch /var/www/proyecto/drop/a.txt
+$ exit
+lfcs@minion2:~/.Git/lfcs-practicas/practica2$ sudo su bob
+$ rm /var/www/proyecto/drop/a.txt
+rm: remove write-protected regular empty file '/var/www/proyecto/drop/a.txt'? yes
+rm: cannot remove '/var/www/proyecto/drop/a.txt': Operation not permitted

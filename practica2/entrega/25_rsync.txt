@@ -1,0 +1,7 @@
+lfcs@minion2:~/.Git/lfcs-practicas$ rsync -av practica2/ practica2_backup/
+sending incremental file list
+
+sent 1,365 bytes  received 22 bytes  2,774.00 bytes/sec
+total size is 20,468,414  speedup is 14,757.33
+
+
