@@ -1,5 +1,7 @@
 .vscode
+.vscode-server
 .env
 work/
 data/
+
 

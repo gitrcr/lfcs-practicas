@@ -17,7 +17,8 @@
 - `head -n 15` -  devuelve los 15 primeros valores de una lista.
 - `tar -czvf y gzip -l` - creación de ficheros comprimidos y revisión de contenido.
 - `getent group` - comprobar base de datos de grupos, permite otras bbdd
-- `chmod g+s` = uso de sgid, sticky.
+- `chmod g+s` -  uso de sgid, sticky.
+- `ls -lahR` - ver ficheros en subdirectorios.
 
 
 
@@ -25,10 +26,12 @@
 - `modificación ruta absulta script inicial`: Sustituir ruta por directorio actual. Script `launch2.sh`
 - `uso de los comandos del módulo`: Repasar el contenido del curso para definir correctamente los flags de find, umask, etc
 - `configuraciónes avanzadas`: Búsqueda de información para poder pasar dos strings al comando `grep` = `grep -E "string1|string2"`
+- he realizado varias consultas via man para localizar los flags utilizados.
+- he realizado consulta en internet para solventar dudas de parámetros que no tenia claros: `set -e, ||`, etc
 
 
 ## Tiempo dedicado
-3: horas
+4: horas
 
 ## Evidencia
 Los ficheros generados están en la carpeta `entrega/`
