@@ -1,0 +1,131 @@
+# solución ejercicio 26
+
+* Resivión estructura y permisos : `ls -laRh`
+* Ejecución(desde ) ./run/app
+```
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26/run$ ./app 
+./app: line 3: conf/app.env: No such file or directory
+```
+* Modificación paths absolutos con variable `$PWD` y prueba con variables en conf.d (permisos de acceso correctos)
+** app = `source $PWD/conf/app.env`
+** app.env.test = `LOG=$PWD/logs/app-debug.log`
+** app.env = `LOG=$PWD/logs/app.log`
+
+* Revisión y ajuste de permisos en toda la estructura, se elimina la escritura para groups y other y se aplica `sticky bit` en `tmp`.
+* Eliminar link roto en `src`
+* Crear consulta de errores:
+```bash
+cat $PWD/logs/app.log | awk '{print $1}' | grep 404 | wc -l
+```
+* Revisión:
+```bash
+0404 NOTFOUND
+OK: prod:8080
+OK: prod:8080
+OK: prod:8080
+OK: prod:8080
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26$ ./run/app
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26$ cat $PWD/logs/app.log 
+200 OK
+404 NOTFOUND
+500 FAIL
+404 NOTFOUND
+404 NOTFOUND
+0404 NOTFOUND
+OK: prod:8080
+OK: prod:8080
+OK: prod:8080
+OK: prod:8080
+OK: prod:8080
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26$ 
+```
+
+```bash
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26$ ls -laRh
+.:
+total 44K
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 .
+drwxrwxr-x  4 lfcs lfcs 4.0K Jun 12 15:40 ..
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 artifact
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 bin
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 16:56 conf
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:56 conf.d
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 logs
+-rw-rw-r--  1 lfcs lfcs  740 Jun 12 17:20 README.md
+drwxr-xr-x  3 lfcs lfcs 4.0K Jun 12 16:46 run
+drwxr-xr-x  3 lfcs lfcs 4.0K Jun 12 17:02 src
+drwxrwxrwt  3 lfcs lfcs 4.0K Jun 12 15:40 tmp
+
+./artifact:
+total 8.0K
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+
+./bin:
+total 20K
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+-rwxr-xr-x  1 lfcs lfcs  160 Jun 12 15:40 awk
+-rwxr-xr-x  1 lfcs lfcs  162 Jun 12 15:40 grep
+-rwxr-xr-x  1 lfcs lfcs   81 Jun 12 15:40 sed
+
+./conf:
+total 20K
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 16:56 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+-rw-r--r--  1 lfcs lfcs   42 Jun 12 16:56 app.env
+-rw-r--r--  2 lfcs lfcs   42 Jun 12 16:44 app.env.bak
+-rw-r--r--  2 lfcs lfcs   42 Jun 12 16:44 app.env.test
+
+./conf.d:
+total 12K
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:56 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+-rw-rw-r--  1 lfcs lfcs   49 Jun 12 17:09 app.env
+
+./logs:
+total 16K
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+-rw-rw-r--  1 lfcs lfcs   43 Jun 12 15:58 app-debug.log
+-rw-rw-r--  1 lfcs lfcs  141 Jun 12 17:16 app.log
+
+./run:
+total 20K
+drwxr-xr-x  3 lfcs lfcs 4.0K Jun 12 16:46 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+-rwxr-xr-x  1 lfcs lfcs   99 Jun 12 16:46 app
+-rw-r--r--  1 lfcs lfcs   94 Jun 12 15:40 app.old
+drwxr-xr-x  2 lfcs lfcs 4.0K Jun 12 15:40 hooks
+
+./run/hooks:
+total 12K
+drwxr-xr-x 2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxr-xr-x 3 lfcs lfcs 4.0K Jun 12 16:46 ..
+-rwxr-xr-x 1 lfcs lfcs   61 Jun 12 15:40 preflight
+
+./src:
+total 12K
+drwxr-xr-x  3 lfcs lfcs 4.0K Jun 12 17:02 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+lrwxrwxrwx  1 lfcs lfcs   15 Jun 12 17:02 app.env.link -> ../conf/app.env
+drwxrwxr-x  2 lfcs lfcs 4.0K Jun 12 15:40 old
+
+./src/old:
+total 8.0K
+drwxrwxr-x 2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxr-xr-x 3 lfcs lfcs 4.0K Jun 12 17:02 ..
+
+./tmp:
+total 12K
+drwxrwxrwt  3 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4.0K Jun 12 15:48 ..
+drwxrwxr-x  2 lfcs lfcs 4.0K Jun 12 15:40 cache
+
+./tmp/cache:
+total 12K
+drwxrwxr-x 2 lfcs lfcs 4.0K Jun 12 15:40 .
+drwxrwxrwt 3 lfcs lfcs 4.0K Jun 12 15:40 ..
+-rw-rw-r-- 1 lfcs lfcs   13 Jun 12 15:40 nota interna.txt
+lfcs@minion2:~/.Git/lfcs-practicas/practica2/work/escenario_26$ 
+```

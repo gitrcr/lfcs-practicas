@@ -1,0 +1,79 @@
+bash -l <<'ENDSCRIPT'
+set -euo pipefail
+base="./work/escenario_26"
+out="./entrega/26_estado_inicial.txt"
+chmod -R u+rwX "$base" 2>/dev/null || true
+rm -rf "$base"
+mkdir -p "$base/src" "$base/src/old" "$base/bin" "$base/run" "$base/run/hooks"
+mkdir -p "$base/logs" "$base/conf" "$base/conf.d" "$base/artifact" "$base/tmp" "$base/tmp/cache"
+
+printf "%s\n%s\n%s\n" "PORT=8080" "MODE=prod" "LOG=logs/app.log" > "$base/conf/app.env"
+printf "%s\n%s\n%s\n" "PORT=8081" "MODE=debug" "LOG=logs/app-debug.log" > "$base/conf.d/app.env"
+
+printf "%s\n%s\n%s\n%s\n" \
+  "#!/usr/bin/env bash" \
+  "set -e" \
+  "source conf/app.env" \
+  "printf \"OK: %s:%s\\n\" \"\$MODE\" \"\$PORT\" >> \"\$LOG\"" \
+  > "$base/run/app"
+chmod 700 "$base/run/app"
+
+printf "%s\n%s\n%s\n%s\n" \
+  "#!/usr/bin/env bash" \
+  "set -e" \
+  "command -v grep >/dev/null" \
+  "exit 0" \
+  > "$base/run/hooks/preflight"
+chmod 755 "$base/run/hooks/preflight"
+
+ln -s ../conf/app.env "$base/src/app.env.link"
+ln -s ../conf/NO_EXISTE.env "$base/src/app.env.broken"
+
+ln "$base/conf/app.env" "$base/conf/app.env.bak"
+
+chmod 600 "$base/conf"
+
+printf "%s\n%s\n%s\n%s\n%s\n%s\n" \
+  "#!/usr/bin/env bash" \
+  "case \"\$*\" in" \
+  "  *404*) command /usr/bin/grep \"\$@\" | command /usr/bin/grep -v $'\xC2\xA0' || true ;; " \
+  "  *) command /usr/bin/grep \"\$@\" ;; " \
+  "esac" \
+  > "$base/bin/grep"
+printf "%s\n%s\n%s\n%s\n%s\n%s\n%s\n" \
+  "#!/usr/bin/env bash" \
+  "if command /usr/bin/grep -q \"MODE=prod\" conf/app.env 2>/dev/null; then" \
+  "  command /usr/bin/awk -F, \"\$@\"" \
+  "else" \
+  "  command /usr/bin/awk \"\$@\"" \
+  "fi" \
+  > "$base/bin/awk"
+printf "%s\n%s\n%s\n" \
+  "#!/usr/bin/env bash" \
+  "command /usr/bin/sed \"\$@\" | command /usr/bin/sed $'s/$/\\r/'" \
+  > "$base/bin/sed"
+chmod 755 "$base/bin/"{grep,awk,sed}
+
+printf $'200 OK\n404 NOTFOUND\n500 FAIL\n404\u00a0NOTFOUND\n' > "$base/logs/app.log"
+printf "404 NOTFOUND\r\n" >> "$base/logs/app.log"
+printf "0404 NOTFOUND\n" >> "$base/logs/app.log"
+
+printf "404 NOTFOUND\n" > "$base/logs/app-debug.log"
+
+cp "$base/run/app" "$base/run/app.old"
+chmod 644 "$base/run/app.old"
+
+printf "%s\n" "nada que ver" > "$base/tmp/cache/"$'nota\u00a0interna.txt'
+
+{
+  echo "== ESCENARIO 2.6 CREADO =="
+  echo "Ruta: $base"
+  echo
+  echo "--- Estado inicial (top) ---"
+  (cd "$base" && ls -la)
+  echo
+  echo "--- Árbol (1 nivel) ---"
+  (cd "$base" && ls -la conf conf.d logs run run/hooks src bin tmp tmp/cache 2>/dev/null || true)
+} | tee "$out" >/dev/null
+echo "OK"
+ENDSCRIPT

@@ -1,0 +1,78 @@
+== ESCENARIO 2.6 CREADO ==
+Ruta: ./work/escenario_26
+
+--- Estado inicial (top) ---
+total 40
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x  4 lfcs lfcs 4096 Jun 12 15:40 ..
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 artifact
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 bin
+drw-------  2 lfcs lfcs 4096 Jun 12 15:40 conf
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 conf.d
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 logs
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 run
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 src
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 tmp
+
+--- Árbol (1 nivel) ---
+bin:
+total 20
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+-rwxr-xr-x  1 lfcs lfcs  160 Jun 12 15:40 awk
+-rwxr-xr-x  1 lfcs lfcs  162 Jun 12 15:40 grep
+-rwxr-xr-x  1 lfcs lfcs   81 Jun 12 15:40 sed
+
+conf:
+total 0
+d????????? ? ? ? ?            ? .
+d????????? ? ? ? ?            ? ..
+-????????? ? ? ? ?            ? app.env
+-????????? ? ? ? ?            ? app.env.bak
+
+conf.d:
+total 12
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+-rw-rw-r--  1 lfcs lfcs   44 Jun 12 15:40 app.env
+
+logs:
+total 16
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+-rw-rw-r--  1 lfcs lfcs   13 Jun 12 15:40 app-debug.log
+-rw-rw-r--  1 lfcs lfcs   71 Jun 12 15:40 app.log
+
+run:
+total 20
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+-rwx------  1 lfcs lfcs   94 Jun 12 15:40 app
+-rw-r--r--  1 lfcs lfcs   94 Jun 12 15:40 app.old
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 hooks
+
+run/hooks:
+total 12
+drwxrwxr-x 2 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 3 lfcs lfcs 4096 Jun 12 15:40 ..
+-rwxr-xr-x 1 lfcs lfcs   61 Jun 12 15:40 preflight
+
+src:
+total 12
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+lrwxrwxrwx  1 lfcs lfcs   21 Jun 12 15:40 app.env.broken -> ../conf/NO_EXISTE.env
+lrwxrwxrwx  1 lfcs lfcs   15 Jun 12 15:40 app.env.link -> ../conf/app.env
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 old
+
+tmp:
+total 12
+drwxrwxr-x  3 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 10 lfcs lfcs 4096 Jun 12 15:40 ..
+drwxrwxr-x  2 lfcs lfcs 4096 Jun 12 15:40 cache
+
+tmp/cache:
+total 12
+drwxrwxr-x 2 lfcs lfcs 4096 Jun 12 15:40 .
+drwxrwxr-x 3 lfcs lfcs 4096 Jun 12 15:40 ..
+-rw-rw-r-- 1 lfcs lfcs   13 Jun 12 15:40 nota interna.txt
